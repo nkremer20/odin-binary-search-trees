@@ -1,13 +1,47 @@
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    } 
+}
+
 class Tree {
     constructor(array) {
-        array = this.array;
-        root = NaN;
+        this.array = array;
+        this.root = this.buildTree(this.array);
     }
 
-    function buildTree(array) {
-        // Sort array
+    buildTree(array) {
+        // Base case
+        if (array.length === 0) return null;
 
-        // Create BST
+        // Remove duplicate values from array
+        const unique_arr = [...new Set(array)]
+
+        // Sort array
+        const sorted_arr = unique_arr.sort((a, b) => a - b);
+
+        // Find the middle number
+        const start = 0;
+        const end = sorted_arr.length - 1;
+        const mid_index = Math.floor((end - start) / 2);
+        const mid = sorted_arr[mid_index];
+
+        // Create starting node
+        const node = new Node(mid);
+
+        // Create left subtree
+        const left_array = sorted_arr.slice(0, mid_index);
+        node.left = this.buildTree(left_array);
+
+        // Create right subtree
+        const right_arr = sorted_arr.slice(mid_index + 1);
+        node.right = this.buildTree(right_arr);
+
+        return node;
     }
 
 }
+
+export { Tree }
