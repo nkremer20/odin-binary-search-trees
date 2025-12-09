@@ -1,6 +1,6 @@
 import { Tree } from "./binary-search-tree.js";
 
-const myTree = new Tree([5, 7, 1, 6, 2, 7])
+const myTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {
   if (node === null) {
@@ -14,5 +14,9 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
   }
 };
+
+prettyPrint(myTree.root)
+
+myTree.insert(57)
 
 prettyPrint(myTree.root)

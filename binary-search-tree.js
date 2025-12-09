@@ -42,6 +42,46 @@ class Tree {
         return node;
     }
 
+    // Insert value into BST
+    insert(value, current_node = this.root) {
+        if (this.root === null ) {
+            this.root = new Node(value);
+            return;
+        }
+
+        if (current_node.data === value) {
+            return;
+        }
+
+        if (value > current_node.data) {
+            if (current_node.right === null) {
+                current_node.right = new Node(value);
+            } else {
+                this.insert(value, current_node.right);
+            }
+        } else {
+            if (current_node.left === null) {
+                current_node.left = new Node(value);
+            } else {
+                this.insert(value, current_node.left);
+            }
+        }
+
+        return;
+    }
+
+    // TODO: Delete value from BST
+    deleteItem(value) {
+        return
+    }
+
+    // TODO: Find node in BST
+    find(value) {
+        return
+    }
+
+
+
 }
 
 export { Tree }
